@@ -14,7 +14,7 @@ jobs:
       DATABASE_NAME: ${{secrets.DATABASE_NAME}}
       SECRET_KEY: ${{secrets.SECRET_KEY}}
       ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
-      ALGORITHM: HS256
+      ALGORITHM: ${{secrets.ALGORITHM}}
     services:
       postgres:
         image: postgres
