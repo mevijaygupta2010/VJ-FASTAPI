@@ -6,15 +6,15 @@ jobs:
   job1: 
     environment: 
       name: testing
-    # env:
-    #   DATABASE_HOSTNAME: ${{secret.DATABASE_HOSTNAME}}
-    #   DATABASE_PORT: 5432
-    #   DATABASE_PASSWORD: password123
-    #   DATABASE_USERNAME: postgres
-    #   DATABASE_NAME: postgres
-    #   SECRET_KEY: 09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
-    #   ACCESS_TOKEN_EXPIRE_MINUTES: 60
-    #   ALGORITHM: S256
+    env:
+      DATABASE_HOSTNAME: ${{secrets.DATABASE_HOSTNAME}}
+      DATABASE_PORT: ${{secrets.DATABASE_PORT}
+      DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}
+      DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}
+      DATABASE_NAME: ${{secrets.DATABASE_NAME}
+      SECRET_KEY: ${{secrets.SECRET_KEY}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}
+      ALGORITHM: ${{secrets.ALGORITHM}
 
     runs-on: ubuntu-latest
     steps:
