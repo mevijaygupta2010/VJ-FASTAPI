@@ -1,0 +1,36 @@
+version: "3"
+services:
+  api:
+    # build: .
+    #we dont build it in prod but pull it from docker.io
+    image: vijaish2001/fastapi
+    depends_on:
+      - postgres
+    ports: 
+      - 80:8000
+    #Don't need the bind mount as prod file will not change as Dev
+    # volumes:
+    #   - ./:/usr/src/app:ro
+    # command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    # env_file:
+    #   - ./.env
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_PASSWORD=password123
+      - DATABASE_USERNAME=postgres
+      - DATABASE_NAME=postgres
+      - SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      - ACCESS_TOKEN_EXPIRE_MINUTES=60
+      - ALGORITHM=HS256
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+volumes:
+  postgres-db:
+
+      
