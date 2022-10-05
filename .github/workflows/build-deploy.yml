@@ -3,7 +3,7 @@ name: Build and Deploy Code
 on: [push,pull_request]
 
 jobs:
-  job1: 
+  build: 
     environment: 
       name: testing
     env:
@@ -70,5 +70,5 @@ jobs:
     steps:
       - name: deploying stuff
         run: echo "going to dpeploy"
-        
+
 
